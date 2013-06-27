@@ -4,3 +4,4 @@ target-eclipse
 .settings/
 pimabank.iml
 .classpath
+.idea
