@@ -1,5 +1,5 @@
 
-<%@ page import="com.cloudfoundry.pimabank.Operation" %>
+<%@ page import="tk.pimabank.Operation" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -41,11 +41,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${operationInstance?.date}">
+				<g:if test="${operationInstance?.dateCreated}">
 				<li class="fieldcontain">
-					<span id="date-label" class="property-label"><g:message code="operation.date.label" default="Date" /></span>
+					<span id="dateCreated-label" class="property-label"><g:message code="operation.dateCreated.label" default="Date Created" /></span>
 					
-						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${operationInstance?.date}" /></span>
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${operationInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${operationInstance?.description}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="operation.description.label" default="Description" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${operationInstance}" field="description"/></span>
 					
 				</li>
 				</g:if>

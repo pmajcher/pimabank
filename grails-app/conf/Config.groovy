@@ -93,24 +93,19 @@ log4j = {
 }
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.cloudfoundry.pimabank.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.cloudfoundry.pimabank.UserUserRole'
-grails.plugins.springsecurity.authority.className = 'com.cloudfoundry.pimabank.UserRole'
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'tk.pimabank.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'tk.pimabank.UserUserRole'
+grails.plugins.springsecurity.authority.className = 'tk.pimabank.UserRole'
 grails.plugins.springsecurity.ui.encodePassword = false
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.cloudfoundry.pimabank.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.cloudfoundry.pimabank.UserUserRole'
-grails.plugins.springsecurity.authority.className = 'com.cloudfoundry.pimabank.UserRole'
-grails.plugins.springsecurity.requestMap.className = 'com.cloudfoundry.pimabank.Requestmap'
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'tk.pimabank.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'tk.pimabank.UserUserRole'
+grails.plugins.springsecurity.authority.className = 'tk.pimabank.UserRole'
+grails.plugins.springsecurity.requestMap.className = 'tk.pimabank.Requestmap'
 grails.plugins.springsecurity.securityConfigType = 'Requestmap'
 
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.cloudfoundry.pimabank.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.cloudfoundry.pimabank.UserUserRole'
-grails.plugins.springsecurity.authority.className = 'com.cloudfoundry.pimabank.UserRole'
-grails.plugins.springsecurity.requestMap.className = 'com.cloudfoundry.pimabank.Requestmap'
-grails.plugins.springsecurity.securityConfigType = 'Requestmap'
+grails.plugins.springsecurity.ui.register.emailFrom = 'piotr.majcher.pl@gmail.com'
 
 grails.views.javascript.library="jquery"
 
@@ -122,4 +117,22 @@ grails.resources.modules = {
 		}
 	}
 }
+
+grails {
+	mail {
+	  host = "smtp.gmail.com"
+	  port = 465
+	  username = "pimabank@gmail.com"
+	  password = "1qaz@WSX3edc"
+	  props = ["mail.smtp.auth":"true",
+			   "mail.smtp.socketFactory.port":"465",
+			   "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+			   "mail.smtp.socketFactory.fallback":"false"]
+ 
+ } }
+
+
+
+
+
 

@@ -62,6 +62,5 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.1'
         compile ":svn:1.0.0.M1"
         compile ":simple-modal:1.0"
-        compile ":jquery-ui:1.8.24"
     }
 }

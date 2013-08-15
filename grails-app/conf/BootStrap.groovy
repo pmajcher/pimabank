@@ -1,8 +1,8 @@
-import com.cloudfoundry.pimabank.Meal
-import com.cloudfoundry.pimabank.User
-import com.cloudfoundry.pimabank.UserRole
-import com.cloudfoundry.pimabank.UserUserRole
-import com.cloudfoundry.pimabank.Requestmap
+import tk.pimabank.Meal
+import tk.pimabank.User
+import tk.pimabank.UserRole
+import tk.pimabank.UserUserRole
+import tk.pimabank.Requestmap
 
 class BootStrap {
 
@@ -14,11 +14,13 @@ class BootStrap {
         def adminRole = UserRole.findByAuthority('ROLE_ADMIN') ?: new UserRole(authority: 'ROLE_ADMIN').save(failOnError: false)
 
 
-        new Requestmap(url: '/user/**', configAttribute: 'ROLE_ADMIN').save(failOnError: false)
-        new Requestmap(url: '/account/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
-        new Requestmap(url: '/orderPeperone/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
-        new Requestmap(url: '/history/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
-
+	    new Requestmap(url: '/user/**', configAttribute: 'ROLE_ADMIN').save(failOnError: false)
+		new Requestmap(url: '/admin/**', configAttribute: 'ROLE_ADMIN').save(failOnError: false)
+  //      new Requestmap(url: '/account/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
+ //       new Requestmap(url: '/orderPeperone/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
+//        new Requestmap(url: '/history/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
+		new Requestmap(url: '/', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
+		 
 
 
         def adminUser = User.findByUsername('admin') ?: new User(

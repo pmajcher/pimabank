@@ -1,12 +1,29 @@
-
-<%@ page import="com.cloudfoundry.pimabank.Operation" %>
+<%@ page import="tk.pimabank.Operation" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'operation.label', default: 'Operation')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
+
+<g:javascript>
+
+   $( "button.approveButton ").button()
+       .click(function( event ) { 
+       alert(this.id);
+       $.ajax({
+           url:"${request.contextPath}/operation/approve",
+           data : {operationId : this.id}
+           })
+           .done(function(data) {
+               alert(data);
+           });
+   });
+</g:javascript>
+
+
+
+</head>
 	<body>
 		<a href="#list-operation" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
@@ -26,11 +43,14 @@
 					
 						<g:sortableColumn property="amount" title="${message(code: 'operation.amount.label', default: 'Amount')}" />
 					
+					    <th>Type</th>
+					    
 						<g:sortableColumn property="approved" title="${message(code: 'operation.approved.label', default: 'Approved')}" />
 					
-						<g:sortableColumn property="date" title="${message(code: 'operation.date.label', default: 'Date')}" />
+						<g:sortableColumn property="dateCreated" title="${message(code: 'operation.created.label', default: 'Created')}" />
 					
 						<th><g:message code="operation.user.label" default="User" /></th>
+						<th>Aproove</th>
 					
 					</tr>
 				</thead>
@@ -38,14 +58,33 @@
 				<g:each in="${operationInstanceList}" status="i" var="operationInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${operationInstance.id}">${fieldValue(bean: operationInstance, field: "amount")}</g:link></td>
+						<td><g:link action="show" id="${operationInstance.id}">
+						 
+						 <g:if test="${operationInstance instanceof tk.pimabank.Meal}">
+						      ${operationInstance.partOfMeal * operationInstance.agregator.mealPrice / 8}
+						 
+						 </g:if>
+						 <g:else>
+						      ${operationInstance.amount}
+						  </g:else>
+						  
+						</g:link></td>
+					
+					    <td>${operationInstance.class}</td>
 					
 						<td><g:formatBoolean boolean="${operationInstance.approved}" /></td>
 					
-						<td><g:formatDate date="${operationInstance.date}" /></td>
+						<td><g:formatDate date="${operationInstance.dateCreated}" /></td>
 					
-						<td>${fieldValue(bean: operationInstance, field: "user")}</td>
-					
+						<td>${fieldValue(bean: operationInstance, field: "user.username")}</td>
+						
+						<td>
+						
+							<g:if test="${!operationInstance.approved}">
+							<button class="approveButton" id="${operationInstance.id}">Potwierdz</button>            
+							</g:if>
+						</td> 
+						
 					</tr>
 				</g:each>
 				</tbody>

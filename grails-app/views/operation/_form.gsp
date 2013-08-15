@@ -1,4 +1,4 @@
-<%@ page import="com.cloudfoundry.pimabank.Operation" %>
+<%@ page import="tk.pimabank.Operation" %>
 
 
 
@@ -18,12 +18,12 @@
 	<g:checkBox name="approved" value="${operationInstance?.approved}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: operationInstance, field: 'date', 'error')} required">
-	<label for="date">
-		<g:message code="operation.date.label" default="Date" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: operationInstance, field: 'description', 'error')} ">
+	<label for="description">
+		<g:message code="operation.description.label" default="Description" />
+		
 	</label>
-	<g:datePicker name="date" precision="day"  value="${operationInstance?.date}"  />
+	<g:textField name="description" value="${operationInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: operationInstance, field: 'user', 'error')} required">
@@ -31,6 +31,6 @@
 		<g:message code="operation.user.label" default="User" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="user" name="user.id" from="${com.cloudfoundry.pimabank.User.list()}" optionKey="id" required="" value="${operationInstance?.user?.id}" class="many-to-one"/>
+	<g:select id="user" name="user.id" from="${tk.pimabank.User.list()}" optionKey="id" required="" value="${operationInstance?.user?.id}" class="many-to-one"/>
 </div>
 

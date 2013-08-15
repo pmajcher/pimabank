@@ -1,4 +1,4 @@
-<%@ page import="com.cloudfoundry.pimabank.Operation" %>
+<%@ page import="tk.pimabank.Operation" %>
 <!DOCTYPE html>
 <html>
 	<head>
