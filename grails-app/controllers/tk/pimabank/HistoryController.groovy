@@ -1,5 +1,7 @@
 package tk.pimabank
 
+import tk.pimabank.data.OperationDTO
+
 class HistoryController {
 
 	def springSecurityService

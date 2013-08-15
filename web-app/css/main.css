@@ -614,6 +614,7 @@ a.skip {
   background-color: #fff;
   z-index: 99;
   text-align: center;
+  display: none;
 }
 
 #loading-image {

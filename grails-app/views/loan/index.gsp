@@ -15,7 +15,8 @@ function onLoading(){
 <g:formRemote name="loanForm"
 	url="[controller: 'loan', action: 'getLoan']"
 	onLoading="onLoading()"
-	onSuccess="onCompleteLoan();">
+	onSuccess="onCompleteLoan();"
+	before="checkiIfUserIsLogged()">
 	<div>
 		<label for="amount">Kwota kredytu:</label> <input name="amount"
 			maxlength="50" value="" id="amount" type="text"> <label

@@ -131,4 +131,11 @@ class LoginController {
 	def ajaxDenied = {
 		render([error: 'access denied'] as JSON)
 	}
+	
+	def isLoggedIn(){
+	
+		render(contentType: "text/json") {
+			isLogged= springSecurityService.isLoggedIn()
+		}
+	}
 }

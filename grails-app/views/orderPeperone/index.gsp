@@ -105,6 +105,7 @@ function onLoading(){
        <g:formRemote name="myForm" 
                      update="resultsAjax"
                      url="[controller: 'orderPeperone', action: 'orderMealManually']"
+                     before="checkiIfUserIsLogged()"
                      onComplete="onCompleteOrder()"
                      onLoading="onLoading()">
        <div>

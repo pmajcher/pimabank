@@ -2,6 +2,10 @@ package tk.pimabank.data
 
 import javax.swing.LookAndFeel
 import tk.pimabank.Operation
+import tk.pimabank.Meal
+import tk.pimabank.Loan
+import tk.pimabank.Payment
+import tk.pimabank.Refund
 
 class OperationDTO {
 

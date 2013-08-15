@@ -154,7 +154,7 @@ function redrawChart(url, charName, charDesc, chartSelector){
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){;
             responseText = xmlhttp.responseText;
-         //   alert("responseText: " +responseText);
+//           alert("responseText: " +responseText);
             
             var obj = $.parseJSON(responseText);
             console.log(obj.categories);
@@ -476,6 +476,10 @@ Highcharts.theme = {
 // Apply the theme
 var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
 
+
+$("a").click(function(){
+    checkiIfUserIsLogged();
+})
 
 
 

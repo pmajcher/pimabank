@@ -16,8 +16,9 @@ function onLoading(){
 
 <g:formRemote name="paymentForm" update="success"
 	url="[controller: 'payment', action: 'pay']"
-	onComplete="onCompletePayment();"
-	onLoading="onLoading()">
+	onComplete="onCompletePayment()"
+	onLoading="onLoading()"
+	before="checkiIfUserIsLogged()">
 	<div>
 		<div>
 			<label for="amount">Kwota:</label> <input name="amount"

@@ -37,14 +37,12 @@
 
 $(function() {
 
-	$(window).load(function() {
-		hideWaitPage();
-	});
-	
+
     var description = $( "#description" );
 
 	$('#report-bug').button()
 	.click(function(){
+		 checkiIfUserIsLogged();
 		 $( "#dialog-modal" ).dialog( "open" );
 	 });
 
@@ -79,6 +77,19 @@ function showWaitPage(){
 function hideWaitPage(){
 	  $('#loading').hide();
 }
+
+
+function checkiIfUserIsLogged(){
+	 $.ajax({
+         url: "${g.createLink(controller:'login',action:'isLoggedIn')}",
+         }).done(function(response) {
+       	    if(response.isLogged != true){
+           	    alert("Sesja użytkownik wygasła");
+       	    	window.location.replace("/pimabank/login");
+       	    }
+         });
+    }
+
 
 </script>
 

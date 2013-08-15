@@ -18,7 +18,7 @@ class BootStrap {
 		new Requestmap(url: '/admin/**', configAttribute: 'ROLE_ADMIN').save(failOnError: false)
   //      new Requestmap(url: '/account/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
  //       new Requestmap(url: '/orderPeperone/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
-//        new Requestmap(url: '/history/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
+        new Requestmap(url: '/history/**', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
 		new Requestmap(url: '/', configAttribute: 'ROLE_USER, ROLE_ADMIN').save(failOnError: false)
 		 
 
