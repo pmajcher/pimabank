@@ -512,7 +512,7 @@ $("a").click(function(){
 		   <div id="about">
 <h2>O PimaBanku</h2>
 <br>
-<p>PimaBank powstał w odpowiedzi na potrzeby ludu pracującego miast (Kraków) i wsi (Zagacie)</p>
+<p>PimaBank powstał w odpowiedzi na potrzeby ludu pracującego miast (Kraków, Olkusz) i wsi (Zagacie)</p>
 
 <h1>Lista zasłużonych honorowych programistów</h1>
 <ul>
