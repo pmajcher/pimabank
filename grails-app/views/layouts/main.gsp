@@ -85,7 +85,7 @@ function checkiIfUserIsLogged(){
          }).done(function(response) {
        	    if(response.isLogged != true){
            	    alert("Sesja użytkownik wygasła");
-       	    	window.location.replace("/pimabank/login");
+       	    	window.location.replace("login");
        	    }
          });
     }

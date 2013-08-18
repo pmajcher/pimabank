@@ -4,5 +4,6 @@ public enum OperationType {
     LOAN,
     PAYMENT,
     PURCHASE,
-	REFUND
+	REFUND,
+	TRANSFER
 }

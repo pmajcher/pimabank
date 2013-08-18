@@ -154,7 +154,7 @@ function redrawChart(url, charName, charDesc, chartSelector){
     xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){;
             responseText = xmlhttp.responseText;
-//           alert("responseText: " +responseText);
+//            alert("responseText: " +responseText);
             
             var obj = $.parseJSON(responseText);
             console.log(obj.categories);
@@ -493,6 +493,7 @@ $("a").click(function(){
 		<ul>
 			<li><a href="orderPeperone">Aktualne zamówienie</a></li>
 			<li><a href="payment">Wpłata</a></li>
+			<li><a href="transfer">Przelewy</a></li>
 			<li><a href="loan">Wypłata</a></li>
 			<li><a href="history">Historia</a></li>
 			<li>

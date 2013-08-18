@@ -51,6 +51,9 @@ redrawChart("home/ajaxTest",
                         <g:img dir="images" file="refund-icon.png" width="25" height="25"
                         alt="Refund" title="Zwrot"/>
                     </g:elseif>
+                    <g:elseif test="${operationInstance.operationType.name() == 'TRANSFER'}">
+                            Przelew
+                    </g:elseif>
 				</td>
 				<td><g:formatDate date="${operationInstance.dateCreated}" type="datetime" style="LONG" timeStyle="SHORT"/>
 				</td>

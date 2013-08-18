@@ -12,4 +12,11 @@ class Operation {
 		description nullable: true
 		amount nullable: true
 	}
+	
+	def beforeValidate() {
+		println "enter operation validate"
+		if(amount != null && amount < 0){
+			errors.rejectValue("amount", "transfer.amount.validator.invalid")
+		}
+	}
 }
