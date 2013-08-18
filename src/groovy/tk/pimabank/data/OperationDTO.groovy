@@ -6,6 +6,7 @@ import tk.pimabank.Meal
 import tk.pimabank.Loan
 import tk.pimabank.Payment
 import tk.pimabank.Refund
+import tk.pimabank.Transfer
 
 class OperationDTO {
 
@@ -46,6 +47,11 @@ class OperationDTO {
 				break;
 			case Refund:
 				operationType = OperationType.REFUND
+				amount = operation.amount
+				description = operation.description
+				break;
+			case Transfer:
+				operationType = OperationType.TRANSFER
 				amount = operation.amount
 				description = operation.description
 				break;

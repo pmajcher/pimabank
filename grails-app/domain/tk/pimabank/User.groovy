@@ -11,12 +11,14 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
    	List operations
-    static hasMany = [operations: Operation]
+    static hasMany = [operations: Operation, incommingCharges: Transfer]
 
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
 	}
+	static mappedBy = [operations: "user", incommingCharges: "recipient"]
+	
 
 	static mapping = {
 		password column: '`password`'
@@ -55,7 +57,9 @@ class User {
 		def accountState = 0;
 		def notApprovedAmount = 0;
 		
-		operations.each(){
+		Operation.findAll("from Operation as o where o.user=:user or o.recipient=:user ",
+			[user: this]).each(){
+//		operations.each(){
 				switch (it) {
 					case Meal:
 						if(it.approved && it.agregator != null){
@@ -66,6 +70,7 @@ class User {
 						}
 						break;
 					case Loan:
+					case Transfer:
 						if(it.approved){
 							accountState -= it.amount
 						}else{
@@ -84,4 +89,5 @@ class User {
 		}
 		[accountState, notApprovedAmount]
 	}
+	
 }

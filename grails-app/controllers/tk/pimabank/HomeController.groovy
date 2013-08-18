@@ -37,48 +37,40 @@ class HomeController {
 		
 		
 		def BigDecimal amount = 0
-	//	operationList.put(0, amount);
-	//	Operation.findAllByUserAndApprovedLike(user, true).each(){
-
 		
-		def number = Operation.findAllApprovedByUser(user, [sort: 'dateCreated', order:'asc']).size();
+		def number = Operation.findAll("from Operation as o where o.approved = true and (o.user=:user or o.recipient=:user )",
+				[user: user]).size()
 		
 		Long [][] array = new Long[number][2];
 		Long [] array2 = new Long[number];
 		println "number: "+number
 		
-		Operation.findAllApprovedByUser(user, [sort: 'dateCreated', order:'asc']).eachWithIndex(){		
+//		Operation.findAllApprovedByUser(user, [sort: 'dateCreated', order:'asc']).eachWithIndex(){		
+		Operation.findAll("from Operation as o where o.approved = true and (o.user=:user or o.recipient=:user )",
+			[user: user]).eachWithIndex(){
 			it, i ->
-				switch (it) {
-					case Meal:
-						if(it.agregator != null){
-							amount -= (it.agregator.mealPrice *  it.partOfMeal) / 8
-						}else{
-							amount -= it.amount
-						}
-					break;
-					case Loan:
+			switch (it) {
+				case Meal:
+					if(it.agregator != null){
+						amount -= (it.agregator.mealPrice *  it.partOfMeal) / 8
+					}else{
 						amount -= it.amount
-					break;
-					case Payment:
-					case Refund:
-						amount += it.amount
-					break;
-				}
-				println "i: "+i + ", amount: "+amount
-				array[i][0] = it.dateCreated.getTime(); 
-				array[i][1] = amount;
-				array2[i] = amount;
-			//operationList.put(it.date.getTime(), amount);
-		}
-		
-	//	Object[][] array = new Object[][]{operationList.keySet.toArray(), operationList.entrySet.toArray()};
-		
-
-//		operationList.eachWithIndex() { 
-//			it, i -> array[i][0] = it.key; array[i][1] = it.value;
-//		};
-//		
+					}
+				break;
+				case Loan:
+				case Transfer:
+					amount -= it.amount
+				break;
+				case Payment:
+				case Refund:
+					amount += it.amount
+				break;
+			}
+			println "i: "+i + ", amount: "+amount
+			array[i][0] = it.dateCreated.getTime(); 
+			array[i][1] = amount;
+			array2[i] = amount;
+		}	
 		getAccountState()
 		
 		render(contentType: "text/json") {
